@@ -5,115 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free online HTML viewer and editor, perfect for previewing HTML content and experimenting with HTML and CSS.">
     <title>Online HTML Viewer and Preview | Free HTML Preview with CSS</title>
- <style>
-    /* 大气配色风格 */
-    body {
-        margin: 10pt;
-        display: flex;
-        background-color: #1a1a1a; /* 深色背景 */
-        color: #f0f0f0; /* 浅色文字 */
-    }
-    #leftPanel, #rightPanel {
-        width: 50%;
-    }
-    #editor {
-        width: 100%;
-        height: 75vh;
-        margin-bottom: 10px;
-        background-color: #333; /* 编辑器背景色 */
-        color: #fff; /* 编辑器文字色 */
-        border: 1px solid #444; /* 边框颜色 */
-    }
-    button {
-        width: 100%;
-        height: 40px;
-        background-color: #007bff; /* 按钮背景色 */
-        color: white; /* 按钮文字色 */
-        border: none;
-    }
-    #display {
-        width: 100%;
-        height: calc(75vh - 40px);
-        border: none;
-    }
-    .resultHeader {
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        height: 40px;
-        line-height: 40px;
-        margin-bottom: 5px;
-        border-bottom: 1px solid #555; /* 分隔线颜色 */
-    }
+    <style>
+        * {
+            box-sizing: border-box; /* 使所有元素的宽度包括内边距和边框 */
+        }
 
-    #editor, #display {
-        width: 100%;
-        height: 75vh; /* 统一设置高度 */
-        background-color: #333; /* 编辑器背景色 */
-        color: #fff; /* 编辑器文字色 */
-        border: 1px solid #444; /* 边框颜色 */
-    }
+        body {
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap; /* 允许元素在必要时换行 */
+            align-items: flex-start; /* 对齐元素到容器的顶部 */
+            background-color: #1a1a1a; /* 深色背景 */
+            color: #f0f0f0; /* 浅色文字 */
+            font-family: Arial, sans-serif; /* 设置字体 */
+        }
 
-    #display {
-        background-color: #f0f8ff; /* 很淡的淡蓝色背景 */
-        border: none;
-    }
+        #leftPanel, #rightPanel {
+            flex: 1; /* 允许两个面板平等地伸缩 */
+            min-width: 300px; /* 设置最小宽度，防止面板过小 */
+            padding: 10px; /* 设置内边距以确保对齐 */
+        }
 
-  #leftPanel, #rightPanel {
-        width: 50%;
-        padding: 10px; /* 设置内边距以确保对齐 */
-    }
+        #editor, #display {
+            width: 100%; /* 调整宽度以适应父容器 */
+            height: 75vh;
+            background-color: #333; /* 编辑器背景色 */
+            color: #fff; /* 编辑器文字色 */
+            border: 1px solid #444; /* 边框颜色 */
+        }
 
-    #editor, #display {
-        width: calc(100% - 20px); /* 减去内边距确保宽度一致 */
-        height: 75vh;
-        margin-bottom: 10px; /* 设置下边距 */
-        border: 1px solid #444;
-    }
+        #display {
+            background-color: #f0f8ff; /* 很淡的淡蓝色背景 */
+            border: none;
+        }
 
-    #editor {
-        background-color: #333; /* 编辑器背景色 */
-        color: #fff; /* 编辑器文字色 */
-    }
+        button {
+            width: 100%; /* 按钮宽度占满父容器 */
+            height: 40px;
+            background-color: #007bff; /* 按钮背景色 */
+            color: white; /* 按钮文字色 */
+            border: none;
+            margin-bottom: 10px; /* 设置按钮的下边距 */
+        }
 
-    #display {
-        background-color: #f0f8ff; /* 很淡的淡蓝色背景 */
-        border: none;
-    }
+        .resultHeader {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #555; /* 分隔线颜色 */
+        }
 
-    button {
-        width: calc(100% - 20px); /* 调整按钮宽度以匹配对齐 */
-        height: 40px;
-        background-color: #007bff; /* 按钮背景色 */
-        color: white; /* 按钮文字色 */
-        border: none;
-        margin-bottom: 10px; /* 设置按钮的下边距 */
-    }
-
-
-
-
-
-</style>
-
-
-
+        /* 媒体查询，适应不同屏幕尺寸 */
+        @media (max-width: 600px) {
+            #leftPanel, #rightPanel {
+                width: 100%; /* 小屏幕时面板宽度占满整个屏幕 */
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="leftPanel">
-        <h1>HTML Preview Online</h1> <!-- 添加H1标签，强调主要关键词 -->
-        <p>Put your HTML text here and see the instant preview!</p> <!-- 添加描述性文本 -->
-        <textarea id="editor" placeholder="Put your HTML text here"></textarea> <!-- 增强可访问性 -->
+        <h1>HTML Preview Online</h1>
+        <p>Put your HTML text here and see the instant preview!</p>
+        <textarea id="editor" placeholder="Put your HTML text here"></textarea>
         <button onclick="displayHtml()">Html Preview</button>
     </div>
+
+   <div style="display:none">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-70M0PVQXJX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-70M0PVQXJX');
+</script>
+  </div>
+
     <div id="rightPanel">
-        <h2>HTML Viewer Online Free</h2> <!-- 添加H2标签，强调次要关键词 -->
+        <h2>HTML Viewer Online Free</h2>
         <div class="resultHeader">HTML Preview Result</div>
-        <iframe id="display" title="HTML Preview Pane"></iframe> <!-- 增加标题属性 -->
+        <iframe id="display" title="HTML Preview Pane"></iframe>
     </div>
 
     <script>
-        // 确保脚本的清晰和注释
         function displayHtml() {
             var content = document.getElementById('editor').value;
             var iframe = document.getElementById('display');
